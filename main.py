@@ -1,16 +1,59 @@
-
-SQL table
-
-
-pattern word 
-
-class patternword (word, anitisem)
-    word = ''
-    antisem = True
-    posts_base
+import psycopg2
+import os
+from dotenv import load_dotenv
 
 
-def  analyse text
+import psycopg2
+
+conn = psycopg2.connect(
+    dbname = 'qmcjdcgq',
+    user = 'qmcjdcgq',
+    password = '4nY4MXBPAtEpeLb7qo78BZno7hfF74kG',
+    host = 'flora.db.elephantsql.com',
+    port = '5432' 
+)
+
+cur = conn.cursor()
+
+# Function to connect to the PostgreSQL database
+def connect_to_db():
+    conn = psycopg2.connect(
+        dbname=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        host=os.getenv("DB_HOST"),
+        port=os.getenv("DB_PORT")
+    )
+  
+    return conn
+
+
+
+
+def view_all(conn):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM posts_db")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+
+conn = connect_to_db()
+
+view_all(conn)
+
+# SQL table
+
+
+# pattern word 
+
+# class patternword (word, anitisem)
+#     word = ''
+#     antisem = True
+#     posts_base
+
+
+# def  analyze text
 
 
 
