@@ -1,51 +1,53 @@
 import psycopg2
-import os
-from dotenv import load_dotenv
 
 
-import psycopg2
-
-conn = psycopg2.connect(
+# Function to connect to database
+def connect_to_db():
+    conn = psycopg2.connect(
     dbname = 'qmcjdcgq',
     user = 'qmcjdcgq',
     password = '4nY4MXBPAtEpeLb7qo78BZno7hfF74kG',
     host = 'flora.db.elephantsql.com',
     port = '5432' 
-)
-
-cur = conn.cursor()
-
-# Function to connect to the PostgreSQL database
-def connect_to_db():
-    conn = psycopg2.connect(
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT")
-    )
-  
+    )  
     return conn
-
-
-
 
 def view_all(conn):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM posts_db")
+    cur.execute("SELECT * FROM patterns")
     rows = cur.fetchall()
     for row in rows:
         print(row)
     cur.close()
 
+
+
+from textblob import TextBlob
+import psycopg2
+
+def get_patterns():
+    conn = connect_to_db()
+
+    pass
+
+def analyze_post(post_text):
+    patterns = get_patterns()
+    blob = TextBlob(post_text.lower())
+    words_in_post = blob.words
+
+    matches = 0
+    for pattern in patterns:
+        if pattern in words_in_post:
+            matches += 1
+
+    antisemitism_score = (matches / len(words_in_post)) * 100
+    return antisemitism_score
+
+
+
 conn = connect_to_db()
 
 view_all(conn)
-
-# SQL table
-
-
-# pattern word 
 
 # class patternword (word, anitisem)
 #     word = ''
