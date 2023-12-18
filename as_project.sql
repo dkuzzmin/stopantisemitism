@@ -2,7 +2,7 @@ CREATE TABLE posts (
     post_id SERIAL PRIMARY KEY,
     post_text TEXT NOT NULL,
     post_time TIMESTAMP NOT NULL,
-    platform_id INTEGER,
+    platform_id VARCHAR(255),
     author VARCHAR(255),
     meta_info JSON
 );
@@ -26,7 +26,7 @@ CREATE TABLE patterns (
 CREATE TABLE results (
     result_id SERIAL PRIMARY KEY,
     post_id INTEGER REFERENCES posts(post_id),
-    analysis_result VARCHAR(100) NOT NULL,
+    analysis_result INTEGER NOT NULL,
     analysis_time TIMESTAMP NOT NULL,
     notes TEXT
 );
@@ -37,6 +37,17 @@ SELECT * FROM posts
 SELECT * FROM platforms
 SELECT * FROM patterns
 SELECT * FROM results
+
+
+INSERT INTO results (post_id, analysis_result,analysis_time) VALUES
+(1, 1, '2023-12-18'),
+(2, 0, '2023-12-18'),
+(3, 1, '2023-12-18'),
+(4, 0, '2023-12-18'),
+(5, 0, '2023-12-18'),
+(6, 1, '2023-12-18'),
+(7, 1, '2023-12-18')
+
 
 
 INSERT INTO patterns (pattern_text, severity_level) VALUES
