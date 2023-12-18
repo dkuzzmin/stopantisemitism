@@ -2,7 +2,7 @@ CREATE TABLE posts (
     post_id SERIAL PRIMARY KEY,
     post_text TEXT NOT NULL,
     post_time TIMESTAMP NOT NULL,
-    platform_id VARCHAR(255),
+    platform_id INTEGER,
     author VARCHAR(255),
     meta_info JSON
 );
