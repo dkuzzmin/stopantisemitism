@@ -107,6 +107,7 @@ def delete_pattern(conn):
         conn.commit()
         print(f"Pattern with ID {pattern_id} deleted")
 
+
 def main_menu():
     conn = connect_to_db()
     analyzer = AntisemitismAnalyzer(conn)
