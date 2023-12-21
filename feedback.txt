@@ -1,0 +1,14 @@
+Dima: Antisemitism posts analyser
+Amazing project! Super related to your course.
+As a NLP student, I particulary love your project! Your decision of using Textblob is precise, 
+because other libraries such as nltk are more complex and could take you more time to finish the project.
+OOP was precisly implemented, as well as database manipulations and relantionships.
+For OOP I would advice you to use some decorators to enrich the project.
+I just wish you could use some API and JSON.
+An idea to implement them would be to use a API to scrap real posts in instagram and analyse them.
+
+Python OOP:9/10
+Modules: 10/10
+Database:10/10
+JSON/API:0/10
+Overall: 8
